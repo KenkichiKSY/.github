@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf8 -*-
-
 import cv2
 import tkinter as tk
 import os
