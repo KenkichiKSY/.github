@@ -1,11 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
 import cv2
 import tkinter as tk
+import os
+import sys
 
 
 
-def main():
+def main(entry_get):
     # 学習済みのモデル（カスケード分類機）を読み込む
-    cascade = cv2.CascadeClassifier(entry1)
+    cascade = cv2.CascadeClassifier(entry1.get() + '/haarcascade_frontalface_default.xml')
     # cascade = cv2.CascadeClassifier("C:/OpenCV4.5.4/opencv-master/opencv-master/data/haarcascades_cuda/haarcascade_frontalface_default.xml")
     # cascade = cv2.CascadeClassifier("C:/OpenCV4.5.4/opencv-master/opencv-master/data/haarcascades/haarcascade_frontalface_default.xml")
 
@@ -46,15 +51,19 @@ def main():
     cv2.destroyAllWindows()
 
 root = tk.Tk()
-# root.geometry('400 * 100')
-root.title('カスケード分類機を使用した顔認証')
+root.title(u'カスケード分類機を使用した顔認証')
+root.geometry('300x200')
 
 label1 = tk.Label(root, text='カスケード分類機の格納場所を指定')
-label1.place(x=100,y=50)
-entry1 = tk.Entry(root,widh = 5)
+label1.place(x=60,y=60)
+# entry1 = tk.Entry(root,widh=5)
+entry1 = tk.Entry(root)
+entry1.insert(tk.END,'')
+entry1.place(x=85,y=85)
+
 
 button = tk.Button(root,width = 10, text='実行')
-main()
-
+button.bind("<Button-1>",main)
+button.place(x=105,y=110)
 
 root.mainloop()
